@@ -11,19 +11,41 @@ class App extends React.Component{
       /*
         Your code goes here
       */
+     book: [],
+     fetchBook: this.problem,
+     bookName: 'Prueba'
     }
   }
 
-  /* 
-    Your code goes here
-  */
+  problem = () => {
+    let term = 'Harry Potter'
+    let url = ` https://www.googleapis.com/books/v1/volumes?q=${term} `
+
+    let settings = {
+      method : 'GET'
+    }
+
+    fetch (url, settings)
+    .then( response => {
+      if(response.ok) {
+        return response.json()
+      }
+      throw new Error ("Err")
+    })
+    .then(responseJSON => {
+      console.log(responseJSON)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+
+   
+  }
 
   render(){
     return(
       <div>
-        {/* 
-          Your code goes here
-        */}
+        <BookForm displayBook = {this.bookName}></BookForm>
       </div>
     )
   }

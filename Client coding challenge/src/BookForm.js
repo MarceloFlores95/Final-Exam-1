@@ -1,11 +1,18 @@
 import React from 'react';
 
+/*
+function displayBook (event) {
+    event.preventDefault()
+  }
+*/
 function BookForm( props ){
     return(
         <div>
-            {/*
-                Your code goes here
-            */}
+            <form >
+                <label>Search for a book:</label>
+                <input type = "text"></input>
+                <input id = 'bookName' type= "submit"></input>
+            </form>
         </div>
     );
 }
