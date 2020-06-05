@@ -28,7 +28,22 @@ const Actors = {
                 .catch( err => {
                     throw new Error( err );
                 });
-    }
+    },
+    getActorByName: function (actorFirstName,actorLastName) {
+        return actorsCollection
+                .findOne({firstName:actorFirstName})
+                .then(actorResponse => {                
+                    if(actorResponse.lastName == actorLastName) {
+                        // console.log(actorResponse)
+                        return actorResponse
+                    } else {
+                        throw new Error( "The actor dont exists" );
+                    }
+                    
+                }).catch( err => {
+                    throw new Error( err );
+                });
+            }
     /*
         Your code goes here
     */

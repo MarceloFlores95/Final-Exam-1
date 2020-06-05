@@ -37,6 +37,25 @@ const Movies = {
                 .catch( err => {
                     throw new Error( err );
                 });
+    },
+    getMovieByID: function (movieID) {
+        return moviesCollection
+                .findOne({movie_ID:movieID})
+                .then(movieResponse => {
+                    return movieResponse
+                }).catch( err => {
+                    throw new Error( err );
+                });
+    },
+    removeActorFromMovieList: function (movieID,actorID) {
+        return moviesCollection
+            .updateOne({movie_ID: movieID}, {pull:{'actors':actorID}})
+            .then(removeResponse => {
+                console.log("hola")
+                return removeResponse
+            }).catch( err => {
+                throw new Error( err );
+            });
     }
     /*
         Your code goes here
